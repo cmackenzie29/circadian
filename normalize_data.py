@@ -7,12 +7,12 @@ import pickle
 # Data will be centered around 500 with range 300
 # Data will be taken in 72 hour chunks, in 10 minute intervals.
 # First chunk will start at the first PER1 peak for each WT result.
-dir = ""
+dir = "/Users/cameron/Desktop/circadian/Data/"
 per = []
 cry = []
 bmal = []
 
-# Ono
+# # Ono
 p1 = np.loadtxt(dir+"RawData/Ono_WT_PER1.dat")
 p2 = np.loadtxt(dir+"RawData/Ono_WT_PER2.dat")
 b = np.loadtxt(dir+"RawData/Ono_WT_BMAL1.dat")
@@ -106,7 +106,7 @@ per.append(p)
 bmal.append(b)
 
 
-# Noguchi WT
+# # Noguchi WT
 p = np.loadtxt(dir+"RawData/Noguchi_WT_PER2.dat")
 b = np.loadtxt(dir+"RawData/Noguchi_WT_BMAL1.dat")
 
@@ -132,12 +132,6 @@ b[:,1] *= 500/b[:,1].mean()
 
 per.append(p)
 bmal.append(b)
-
-
-# for p in per:
-# 	plt.plot(p[:,0],p[:,1])
-
-# plt.show()
 
 pickle.dump(per, open(dir+'per.sav', 'wb'))
 pickle.dump(cry, open(dir+'cry.sav', 'wb'))
